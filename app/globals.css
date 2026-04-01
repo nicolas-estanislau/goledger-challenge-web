@@ -1,12 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f0e8;
+  --background: rgba(0, 0, 0, 0.4);
   --foreground: #1f1a17;
+  --muted-foreground: #6b5e4a;
   --surface: rgba(255, 248, 242, 0.82);
+  --surface-strong: #211d19;
+  --panel-solid: rgba(33, 29, 25, 0.92);
+  --panel-muted: rgba(42, 37, 31, 0.86);
   --card-border: rgba(89, 54, 31, 0.14);
   --accent: #c15c2d;
   --accent-strong: #8f3410;
+  --accent-soft: rgba(255, 156, 52, 0.22);
+  --olive: #6d6b4d;
+  --success-bg: #183526;
+  --success-fg: #b5efc8;
+  --danger-bg: #3b1f1e;
+  --danger-fg: #ffc1bd;
   --font-body: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
   --font-heading: "Trebuchet MS", "Avenir Next Condensed", "Segoe UI", sans-serif;
   --font-mono-stack: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
@@ -64,8 +74,9 @@ h4 {
 }
 
 .film-grid {
+  background: var(--background);
   background-image:
-    linear-gradient(rgba(193, 92, 45, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(193, 92, 45, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(4, 237, 253, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
 }

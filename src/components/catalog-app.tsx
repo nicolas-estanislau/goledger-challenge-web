@@ -196,14 +196,14 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
       [assetType]:
         assetType === "seasons"
           ? {
-              ...emptyFormState.seasons,
-              tvShowKey: catalog.tvShows[0]?.blockchainKey ?? "",
-            }
+            ...emptyFormState.seasons,
+            tvShowKey: catalog.tvShows[0]?.blockchainKey ?? "",
+          }
           : assetType === "episodes"
             ? {
-                ...emptyFormState.episodes,
-                seasonKey: catalog.seasons[0]?.blockchainKey ?? "",
-              }
+              ...emptyFormState.episodes,
+              seasonKey: catalog.seasons[0]?.blockchainKey ?? "",
+            }
             : assetType === "watchlist"
               ? emptyFormState.watchlist
               : emptyFormState.tvShows,
@@ -964,8 +964,8 @@ function AssetForm({
                         ...current.watchlist,
                         tvShowKeys: checked
                           ? current.watchlist.tvShowKeys.filter(
-                              (key) => key !== show.blockchainKey,
-                            )
+                            (key) => key !== show.blockchainKey,
+                          )
                           : [...current.watchlist.tvShowKeys, show.blockchainKey],
                       },
                     }))
