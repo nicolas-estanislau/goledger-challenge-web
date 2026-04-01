@@ -12,6 +12,25 @@
   --font-mono-stack: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
 }
 
+[data-theme="dark"] {
+  --background: #171514;
+  --foreground: #f8f1e4;
+  --muted-foreground: #c7baa6;
+  --surface: rgba(28, 25, 22, 0.84);
+  --surface-strong: #211d19;
+  --panel-solid: rgba(33, 29, 25, 0.92);
+  --panel-muted: rgba(42, 37, 31, 0.86);
+  --card-border: rgba(248, 241, 228, 0.12);
+  --accent: #ff9c34;
+  --accent-strong: #ffb55f;
+  --accent-soft: rgba(255, 156, 52, 0.22);
+  --olive: #6d6b4d;
+  --success-bg: #183526;
+  --success-fg: #b5efc8;
+  --danger-bg: #3b1f1e;
+  --danger-fg: #ffc1bd;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

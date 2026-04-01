@@ -12,8 +12,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="pt-BR" className="h-full antialiased" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function () {
+              try {
+                var saved = localStorage.getItem("theme-mode");
+                var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = saved === "light" || saved === "dark"
+                  ? saved
+                  : (systemDark ? "dark" : "light");
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.style.colorScheme = theme;
+              } catch (error) {
+                document.documentElement.dataset.theme = "light";
+                document.documentElement.style.colorScheme = "light";
+              }
+            })();
+          `,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
