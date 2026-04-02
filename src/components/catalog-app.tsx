@@ -169,6 +169,17 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
     return () => media.removeEventListener("change", syncTheme);
   }, [themeMode]);
 
+  useEffect(() => {
+    if (!modal) return;
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setModal(null);
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [modal]);
+
   async function refreshCatalog(successMessage?: string) {
     startTransition(async () => {
       try {
@@ -453,8 +464,15 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
       </div>
 
       {modal ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6 backdrop-blur-sm">
-          <div className="glass-panel max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-[2rem] p-6 sm:p-7">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6 backdrop-blur-sm"
+          onClick={() => setModal(null)}
+          role="presentation"
+        >
+          <div
+            className="glass-panel max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-[2rem] p-6 sm:p-7"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted-foreground)]">
