@@ -18,18 +18,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
             (function () {
-              try {
-                var saved = localStorage.getItem("theme-mode");
-                var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                var theme = saved === "light" || saved === "dark"
-                  ? saved
-                  : (systemDark ? "dark" : "light");
-                document.documentElement.dataset.theme = theme;
-                document.documentElement.style.colorScheme = theme;
-              } catch (error) {
-                document.documentElement.dataset.theme = "light";
-                document.documentElement.style.colorScheme = "light";
-              }
+              var saved = localStorage.getItem("theme-mode");
+              var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+              var theme = saved || (systemDark ? "dark" : "light");
+              document.documentElement.dataset.theme = theme;
+              document.documentElement.style.colorScheme = theme;
             })();
           `,
           }}

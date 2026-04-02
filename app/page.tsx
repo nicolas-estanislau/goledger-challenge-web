@@ -1,4 +1,4 @@
-import CatalogApp from "@/src/components/catalog-app";
+import CatalogApp from "@/src/components/catalog/catalog-app";
 import { getCatalogData } from "@/src/lib/goledger/server";
 
 /**

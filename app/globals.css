@@ -80,3 +80,14 @@ h4 {
     linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
 }
+
+/* Theme toggle: SVG uses currentColor — tie colors to app theme (data-theme), not OS prefers-color-scheme */
+html[data-theme="light"] .theme-toggle {
+  color: #0a0a0a;
+  background-color: rgba(3, 7, 18, 0.05);
+}
+
+html[data-theme="dark"] .theme-toggle {
+  color: #fafafa;
+  background-color: rgba(255, 255, 255, 0.1);
+}

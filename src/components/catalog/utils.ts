@@ -26,9 +26,3 @@ export function resolveSystemTheme() {
     ? "dark"
     : "light";
 }
-
-export function cycleTheme(mode: ThemeMode): ThemeMode {
-  if (mode === "system") return "light";
-  if (mode === "light") return "dark";
-  return "system";
-}
