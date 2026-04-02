@@ -386,14 +386,14 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
                 <button
                   type="button"
                   onClick={() => setThemeMode((current) => cycleTheme(current))}
-                  className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] hover:-translate-y-0.5"
+                  className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] hover:-translate-y-0.5 cursor-pointer"
                 >
                   Theme: {themeMode === "system" ? `System (${resolvedTheme})` : themeMode}
                 </button>
                 <button
                   type="button"
                   onClick={() => void refreshCatalog("Catalog synchronized.")}
-                  className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] hover:-translate-y-0.5"
+                  className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] hover:-translate-y-0.5 cursor-pointer"
                 >
                   Refresh
                 </button>
@@ -468,7 +468,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
               <button
                 type="button"
                 onClick={() => setModal(null)}
-                className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-sm text-[var(--foreground)]"
+                className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-3 py-1.5 text-sm text-[var(--foreground)] cursor-pointer"
               >
                 Close
               </button>
@@ -488,14 +488,14 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
               <button
                 type="button"
                 onClick={() => setModal(null)}
-                className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-4 py-2 text-sm font-medium text-[var(--foreground)]"
+                className="rounded-full border border-[var(--card-border)] bg-[var(--panel-solid)] px-4 py-2 text-sm font-medium text-[var(--foreground)] cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={() => void persistAsset()}
-                className="rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-black hover:bg-[var(--accent-strong)]"
+                className="rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-semibold text-black hover:bg-[var(--accent-strong)] cursor-pointer"
               >
                 {modal.mode === "create" ? "Save asset" : "Update asset"}
               </button>
@@ -539,7 +539,7 @@ function EntitySection({
           <button
             type="button"
             onClick={() => onCreate(assetType)}
-            className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-black hover:-translate-y-0.5"
+            className="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-black hover:-translate-y-0.5 cursor-pointer"
           >
             New
           </button>
@@ -569,14 +569,14 @@ function EntitySection({
                   <button
                     type="button"
                     onClick={() => onEdit(assetType, item)}
-                    className="rounded-full border border-[var(--card-border)] bg-[var(--panel-muted)] px-4 py-2 text-sm font-medium text-[var(--foreground)]"
+                    className="rounded-full border border-[var(--card-border)] bg-[var(--panel-muted)] px-4 py-2 text-sm font-medium text-[var(--foreground)] cursor-pointer"
                   >
                     Edit
                   </button>
                   <button
                     type="button"
                     onClick={() => void onDelete(item.key)}
-                    className="rounded-full border border-[var(--danger-fg)]/25 bg-[var(--danger-bg)] px-4 py-2 text-sm font-medium text-[var(--danger-fg)]"
+                    className="rounded-full border border-[var(--danger-fg)]/25 bg-[var(--danger-bg)] px-4 py-2 text-sm font-medium text-[var(--danger-fg)] cursor-pointer"
                   >
                     Delete
                   </button>

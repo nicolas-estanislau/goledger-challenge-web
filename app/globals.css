@@ -1,40 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: rgba(0, 0, 0, 0.4);
+  --background: #f8f5f2;
   --foreground: #1f1a17;
   --muted-foreground: #6b5e4a;
-  --surface: rgba(255, 248, 242, 0.82);
-  --surface-strong: #211d19;
-  --panel-solid: rgba(33, 29, 25, 0.92);
-  --panel-muted: rgba(42, 37, 31, 0.86);
-  --card-border: rgba(89, 54, 31, 0.14);
+  --surface: #ffffff;
+  --surface-strong: #f1ebe5;
+  --panel-solid: #ffffff;
+  --panel-muted: #f6f1eb;
+  --card-border: rgba(89, 54, 31, 0.12);
   --accent: #c15c2d;
   --accent-strong: #8f3410;
-  --accent-soft: rgba(255, 156, 52, 0.22);
+  --accent-soft: rgba(193, 92, 45, 0.12);
   --olive: #6d6b4d;
-  --success-bg: #183526;
-  --success-fg: #b5efc8;
-  --danger-bg: #3b1f1e;
-  --danger-fg: #ffc1bd;
+  --success-bg: #e6f4ec;
+  --success-fg: #1f7a4d;
+  --danger-bg: #fdecea;
+  --danger-fg: #b42318;
   --font-body: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
   --font-heading: "Trebuchet MS", "Avenir Next Condensed", "Segoe UI", sans-serif;
   --font-mono-stack: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
 }
 
 [data-theme="dark"] {
-  --background: #171514;
+  --background: #141210;
   --foreground: #f8f1e4;
-  --muted-foreground: #c7baa6;
-  --surface: rgba(28, 25, 22, 0.84);
-  --surface-strong: #211d19;
-  --panel-solid: rgba(33, 29, 25, 0.92);
-  --panel-muted: rgba(42, 37, 31, 0.86);
-  --card-border: rgba(248, 241, 228, 0.12);
+  --muted-foreground: #d2c6b2;
+  --surface: #1e1a17;
+  --surface-strong: #26221e;
+  --panel-solid: #211d19;
+  --panel-muted: #2a2520;
+  --card-border: rgba(248, 241, 228, 0.14);
   --accent: #ff9c34;
   --accent-strong: #ffb55f;
-  --accent-soft: rgba(255, 156, 52, 0.22);
-  --olive: #6d6b4d;
+  --accent-soft: rgba(255, 156, 52, 0.18);
+  --olive: #7a7757;
   --success-bg: #183526;
   --success-fg: #b5efc8;
   --danger-bg: #3b1f1e;
