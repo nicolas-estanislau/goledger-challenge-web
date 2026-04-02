@@ -15,7 +15,12 @@ import type {
 import { AssetForm } from "./asset-form";
 import type { CatalogItem, FormState, ModalState, ThemeMode } from "./form-state";
 import { emptyFormState, entityMeta } from "./form-state";
-import { EntitySection } from "./entity-section";
+import { EpisodesScreen } from "./screens/episodes-screen";
+import { SeasonsScreen } from "./screens/seasons-screen";
+import { TvShowsScreen } from "./screens/tvshows-screen";
+import { WatchlistScreen } from "./screens/watchlist-screen";
+import type { CatalogView } from "./top-nav";
+import { TopNav } from "./top-nav";
 import { cycleTheme, normalizeDateInput, resolveSystemTheme } from "./utils";
 
 export default function CatalogApp({ initialData }: { initialData: CatalogData }) {
@@ -28,6 +33,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
   const [themeMode, setThemeMode] = useState<ThemeMode>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
   const [isPending, startTransition] = useTransition();
+  const [view, setView] = useState<CatalogView>("tvShows");
 
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
 
@@ -259,6 +265,13 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
     { label: "Watchlists", value: catalog.watchlist.length },
   ];
 
+  const navCounts: Record<CatalogView, number> = {
+    tvShows: catalog.tvShows.length,
+    seasons: catalog.seasons.length,
+    episodes: catalog.episodes.length,
+    watchlist: catalog.watchlist.length,
+  };
+
   return (
     <main className="film-grid min-h-screen px-4 py-6 text-[var(--foreground)] sm:px-6 lg:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
@@ -349,35 +362,41 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
           </div>
         </section>
 
-        <section className="grid gap-5 xl:grid-cols-2">
-          <EntitySection
-            assetType="tvShows"
-            items={filtered.tvShows}
-            onCreate={openCreate}
-            onEdit={openEdit}
-            onDelete={removeAsset}
-          />
-          <EntitySection
-            assetType="seasons"
-            items={filtered.seasons}
-            onCreate={openCreate}
-            onEdit={openEdit}
-            onDelete={removeAsset}
-          />
-          <EntitySection
-            assetType="episodes"
-            items={filtered.episodes}
-            onCreate={openCreate}
-            onEdit={openEdit}
-            onDelete={removeAsset}
-          />
-          <EntitySection
-            assetType="watchlist"
-            items={filtered.watchlist}
-            onCreate={openCreate}
-            onEdit={openEdit}
-            onDelete={removeAsset}
-          />
+        <TopNav view={view} onChange={setView} counts={navCounts} />
+
+        <section className="grid gap-5">
+          {view === "tvShows" ? (
+            <TvShowsScreen
+              items={filtered.tvShows}
+              onCreate={() => openCreate("tvShows")}
+              onEdit={(item) => openEdit("tvShows", item)}
+              onDelete={removeAsset}
+            />
+          ) : null}
+          {view === "seasons" ? (
+            <SeasonsScreen
+              items={filtered.seasons}
+              onCreate={() => openCreate("seasons")}
+              onEdit={(item) => openEdit("seasons", item)}
+              onDelete={removeAsset}
+            />
+          ) : null}
+          {view === "episodes" ? (
+            <EpisodesScreen
+              items={filtered.episodes}
+              onCreate={() => openCreate("episodes")}
+              onEdit={(item) => openEdit("episodes", item)}
+              onDelete={removeAsset}
+            />
+          ) : null}
+          {view === "watchlist" ? (
+            <WatchlistScreen
+              items={filtered.watchlist}
+              onCreate={() => openCreate("watchlist")}
+              onEdit={(item) => openEdit("watchlist", item)}
+              onDelete={removeAsset}
+            />
+          ) : null}
         </section>
       </div>
 
