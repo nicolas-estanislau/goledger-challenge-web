@@ -24,10 +24,10 @@ Interface web em Next.js para gerenciar `tvShows`, `seasons`, `episodes` e `watc
 npm install
 ```
 
-2. Crie `.env.local` a partir do exemplo:
+2. Crie `.env` a partir do exemplo:
 
 ```bash
-cp .env.example .env.local
+cp .env.example .env
 ```
 
 3. Preencha as credenciais do desafio:

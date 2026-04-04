@@ -53,6 +53,8 @@ const apiBaseUrl =
   "http://ec2-50-19-36-138.compute-1.amazonaws.com";
 
 function getAuthHeader() {
+  // GoLedger usa autenticação Basic via env vars.
+  // Isso é necessário porque a API não suporta OAuth/JWT.
   const username = process.env.GOLEDGER_API_USERNAME;
   const password = process.env.GOLEDGER_API_PASSWORD;
 
@@ -100,6 +102,13 @@ async function searchAssets(assetType: AssetType) {
   return response.result;
 }
 
+// Orquestra a agregação de dados vindos da API GoLedger.
+// A API retorna dados desnormalizados (sem joins),
+// então aqui fazemos:
+// - fetch paralelo de todos os assets
+// - criação de mapas para lookup (tvShows, seasons)
+// - enriquecimento dos dados (ex: seasonLabel, tvShowTitle)
+// - ordenação para consumo na UI
 export async function getCatalogData(): Promise<CatalogData> {
   const [tvShowsRaw, seasonsRaw, episodesRaw, watchlistRaw] = await Promise.all([
     searchAssets("tvShows"),
@@ -232,6 +241,7 @@ export function createAssetPayload<T extends AssetType>(
         episodeNumber: Number(episode.episodeNumber),
         title: episode.title.trim(),
         description: episode.description.trim(),
+        // API exige data em formato ISO string
         releaseDate: new Date(episode.releaseDate).toISOString(),
         rating:
           episode.rating === null || episode.rating === undefined

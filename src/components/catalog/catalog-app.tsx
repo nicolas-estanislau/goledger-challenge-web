@@ -34,6 +34,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
   const [isPending, startTransition] = useTransition();
   const [view, setView] = useState<CatalogView>("tvShows");
 
+  // Evita travar a UI ao digitar (debounce visual com React)
   const deferredSearch = useDeferredValue(search.trim().toLowerCase());
 
   const filtered = useMemo(() => {
@@ -64,6 +65,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
     };
   }, [catalog, deferredSearch]);
 
+  // Carrega preferência de tema salva no localStorage
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme-mode");
     if (savedTheme === "system" || savedTheme === "light" || savedTheme === "dark") {
@@ -91,6 +93,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
     return () => media.removeEventListener("change", syncTheme);
   }, [themeMode]);
 
+  // Fecha o modal ao pressionar ESC
   useEffect(() => {
     if (!modal) return;
 
@@ -99,6 +102,7 @@ export default function CatalogApp({ initialData }: { initialData: CatalogData }
     }
 
     window.addEventListener("keydown", onKeyDown);
+    // Remove o listener ao desmontar ou atualizar
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [modal]);
 

@@ -1,11 +1,13 @@
 import CatalogApp from "@/src/components/catalog/catalog-app";
 import { getCatalogData } from "@/src/lib/goledger/server";
-
 /**
- * Server-rendered home: `getCatalogData()` runs once per request on the server
- * (same four GoLedger search queries and normalization as `GET /api/catalog`,
- * which the client calls on Refresh).
- */
+
+* Página inicial renderizada no servidor: `getCatalogData()` é executada uma vez por solicitação no servidor
+* (as mesmas quatro consultas de pesquisa GoLedger e normalização `GET /api/catalog`,
+
+* que o cliente chama ao atualizar a página).
+
+*/
 export default async function Home() {
   const initialData = await getCatalogData();
 
