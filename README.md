@@ -55,6 +55,25 @@ npm run start
 npm run lint
 ```
 
+## Rodando com Docker
+
+1. Build da imagem
+
+```bash
+docker build -t goledger-frontend .
+```
+
+2. Rodar o container
+
+```bash
+docker run -p 3000:3000 --env-file .env goledger-frontend
+```
+
+3. Acessar no navegador
+
+```env
+http://localhost:3000
+```
 ## Observações
 
 - Todas as chamadas autenticadas passam pelas rotas server-side em `app/api`.
