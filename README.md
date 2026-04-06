@@ -8,6 +8,7 @@ Interface web em Next.js para gerenciar `tvShows`, `seasons`, `episodes` e `watc
 - CRUD de TV Shows, Seasons, Episodes e Watchlists
 - Proxy server-side no Next.js para manter o Basic Auth fora do client
 - UI responsiva com visual editorial/cinematográfico
+- Dark mode
 
 ## Tecnologias
 
